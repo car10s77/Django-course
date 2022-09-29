@@ -1,9 +1,16 @@
 from django.http import HttpResponse
 import datetime
+from django.template import Template, Context
 
 def saludo(request):
 
-	return HttpResponse("Esta es la vista Django")
+	ext_file = open("/home/car10s/Documentos/Python/Django/CourseSite/CourseSite/templates/template1.html")
+	tmpl = Template(ext_file.read())
+	ext_file.close()
+
+	context = Context()
+	doc = tmpl.render(context)
+	return HttpResponse(doc)
 
 def getDate(request):
 
